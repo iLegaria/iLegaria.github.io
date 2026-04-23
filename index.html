@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ian Legaria — Backend Engineer</title>
+<meta name="description" content="Senior Backend Engineer with 7+ years building distributed systems, enterprise integrations, and cloud-native backend services across Java, Go, and TypeScript.">
+<meta property="og:title" content="Ian Legaria — Senior Backend Engineer">
+<meta property="og:description" content="Seven years building backend systems across enterprise, SaaS, and startup contexts — Java, Go, distributed systems, cloud-native architectures.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ian Legaria — Senior Backend Engineer">
+<meta name="twitter:description" content="Seven years building backend systems across enterprise, SaaS, and startup contexts — Java, Go, distributed systems, cloud-native architectures.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05070e;--text:#cec5a8;--muted:#5a5868;--subtle:#9e9678;
+  --accent:#e8952a;--accent-dim:rgba(232,149,42,0.07);--accent-glow:rgba(232,149,42,0.22);
+  --border:#121420;--mono:'JetBrains Mono',monospace;--serif:'Cinzel',serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--mono);font-size:13px;line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+
+nav{position:fixed;inset:0 0 auto 0;z-index:50;border-bottom:1px solid var(--border);background:rgba(5,7,14,0.85);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 60px;height:56px;display:flex;align-items:center;justify-content:space-between;}
+.nav-brand{font-family:var(--serif);font-size:13px;font-weight:600;letter-spacing:0.18em;color:var(--accent);text-decoration:none;text-transform:uppercase;}
+.nav-links{list-style:none;display:flex;gap:36px;}
+.nav-links a{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#6a6880;text-decoration:none;transition:color .25s;}
+.nav-links a:hover{color:var(--accent);}
+
+/* ── HERO ── */
+#hero{
+  height:100vh;position:relative;overflow:hidden;
+  background:
+    linear-gradient(to right,rgba(5,7,14,1.00) 0%,rgba(5,7,14,0.97) 25%,rgba(5,7,14,0.80) 45%,rgba(5,7,14,0.30) 65%,rgba(5,7,14,0.00) 82%),
+    url('wilds.png') right center / cover no-repeat;
+}
+#canvas-stars{position:fixed;inset:0;z-index:1;pointer-events:none;}
+.fire-overlay{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at 70% 68%,rgba(232,140,30,0.32),transparent 32%);animation:fireGlow 2.2s ease-in-out infinite alternate;}
+@keyframes fireGlow{0%{opacity:.55;}100%{opacity:1.0;}}
+.atmos-overlay{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at 85% 18%,rgba(20,190,210,0.18),transparent 45%);animation:atmosPulse 8s ease-in-out infinite alternate;}
+@keyframes atmosPulse{0%{opacity:.6;}100%{opacity:1.0;}}
+.grain{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0.028;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px;}
+.hero-content{position:relative;z-index:10;height:100%;display:flex;align-items:center;padding:0 60px;max-width:640px;}
+.hero-inner{width:100%;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;opacity:0;animation:fadeup .6s ease forwards .1s;}
+.hero-eyebrow::before{content:'';display:block;width:22px;height:1px;background:var(--accent);}
+h1.name{font-family:var(--serif);font-size:clamp(38px,5.5vw,68px);font-weight:700;line-height:1.05;letter-spacing:0.03em;color:var(--text);margin-bottom:20px;opacity:0;animation:fadeup .6s ease forwards .2s;}
+.hero-role{font-size:12px;color:#6a6880;letter-spacing:0.05em;margin-bottom:32px;opacity:0;animation:fadeup .6s ease forwards .28s;}
+.hero-role span{color:#a09888;}
+.hero-bio{font-size:13px;color:#a09888;line-height:1.9;max-width:440px;opacity:0;animation:fadeup .6s ease forwards .36s;}
+.hero-actions{margin-top:44px;display:flex;gap:14px;opacity:0;animation:fadeup .6s ease forwards .44s;}
+
+.btn{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;padding:11px 24px;border:1px solid var(--border);color:#a09888;background:transparent;text-decoration:none;transition:all .25s;display:inline-block;cursor:pointer;}
+.btn:hover{border-color:#a09888;color:var(--text);}
+.btn-accent{border-color:var(--accent);color:var(--accent);}
+.btn-accent:hover{background:var(--accent-dim);box-shadow:0 0 28px var(--accent-glow);}
+
+/* ── INNER SECTIONS ── */
+.wrap{position:relative;z-index:3;max-width:820px;margin:0 auto;padding:0 36px;}
+section.inner{position:relative;z-index:3;padding:100px 0;border-bottom:1px solid var(--border);background:rgba(5,7,14,0.88);}
+section.inner:last-of-type{border-bottom:none;}
+.sec-eye{font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.sec-title{font-family:var(--serif);font-size:clamp(20px,3vw,32px);font-weight:600;letter-spacing:0.06em;color:var(--text);margin-bottom:52px;}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);margin-bottom:52px;}
+.stat{padding:26px 24px;border-right:1px solid var(--border);}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:var(--serif);font-size:32px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:5px;}
+.stat-l{font-size:10px;color:#6a6880;letter-spacing:0.04em;}
+
+/* stack */
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1px;border:1px solid var(--border);background:var(--border);}
+.stack-cell{background:var(--bg);padding:18px 22px;transition:background .2s;position:relative;overflow:hidden;}
+.stack-cell::before{content:'';position:absolute;inset:0 auto 0 0;width:1px;background:var(--accent);transform:scaleY(0);transform-origin:bottom;transition:transform .3s ease;}
+.stack-cell:hover{background:#08080f;}
+.stack-cell:hover::before{transform:scaleY(1);}
+.stack-n{font-size:12.5px;font-weight:500;color:var(--text);margin-bottom:2px;}
+.stack-d{font-size:10.5px;color:#6a6880;}
+
+/* carousel */
+.carousel{border:1px solid var(--border);background:rgba(5,7,14,0.7);position:relative;overflow:hidden;}
+.carousel::before{content:'';position:absolute;inset:0 auto 0 0;width:2px;background:linear-gradient(to bottom,transparent,var(--accent),transparent);z-index:2;}
+.slide{display:none;padding:42px 44px 36px;animation:slidein .35s ease;}
+.slide.active{display:block;}
+@keyframes slidein{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.case-num{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.case-title{font-family:var(--serif);font-size:18px;font-weight:600;letter-spacing:0.04em;color:var(--text);margin-bottom:6px;}
+.case-sub{font-size:11.5px;color:#6a6880;margin-bottom:28px;line-height:1.6;letter-spacing:0.02em;}
+.case-block{margin-bottom:18px;}
+.case-label{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#6a6880;margin-bottom:7px;}
+.case-block p{font-size:12.5px;color:#a09888;line-height:1.9;}
+code{font-family:var(--mono);font-size:11.5px;color:var(--accent);background:var(--accent-dim);padding:1px 5px;border-radius:2px;}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:24px;}
+.tag{font-size:9.5px;letter-spacing:0.06em;padding:3px 10px;border:1px solid var(--border);color:#6a6880;}
+.carousel-footer{display:flex;align-items:center;justify-content:space-between;padding:16px 44px 20px;border-top:1px solid var(--border);}
+.carousel-dots{display:flex;gap:8px;align-items:center;}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--border);border:1px solid var(--muted);cursor:pointer;transition:background .2s,transform .2s,border-color .2s;}
+.dot.active{background:var(--accent);border-color:var(--accent);transform:scale(1.3);}
+.carousel-arrows{display:flex;gap:10px;}
+.arr{font-family:var(--mono);font-size:13px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);color:#6a6880;background:transparent;cursor:pointer;transition:border-color .2s,color .2s,box-shadow .2s;user-select:none;}
+.arr:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 12px var(--accent-glow);}
+.arr:disabled{opacity:.22;cursor:default;pointer-events:none;}
+
+/* ── TIMELINE EXPERIENCE ── */
+.timeline{
+  position:relative;
+  padding-left:36px;
+}
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:5px; top:8px; bottom:8px;
+  width:1px;
+  background:linear-gradient(to bottom, var(--accent) 0%, rgba(232,149,42,0.15) 100%);
+}
+.tl-item{
+  position:relative;
+  padding-bottom:56px;
+}
+.tl-item:last-child{padding-bottom:0;}
+
+.tl-dot{
+  position:absolute;
+  left:-36px; top:5px;
+  width:11px; height:11px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 10px var(--accent-glow), 0 0 20px rgba(232,149,42,0.15);
+  flex-shrink:0;
+}
+.tl-dot.dim{
+  background:var(--muted);
+  box-shadow:none;
+}
+
+.tl-header{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-bottom:2px;
+}
+.tl-dates{font-size:10px;color:#6a6880;letter-spacing:0.05em;}
+.tl-sep{font-size:10px;color:var(--border);}
+.tl-company{font-size:11px;font-weight:500;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase;}
+.tl-location{font-size:10px;color:#6a6880;}
+.tl-role{
+  font-family:var(--serif);
+  font-size:17px;font-weight:600;letter-spacing:0.04em;
+  color:var(--text);margin-bottom:18px;margin-top:3px;
+}
+
+/* sub-project label inside IBM */
+.tl-project{
+  font-size:9px;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--accent);opacity:.75;
+  margin-bottom:9px;margin-top:20px;
+  padding-left:12px;
+  border-left:1px solid rgba(232,149,42,0.3);
+}
+.tl-project:first-of-type{margin-top:0;}
+
+.tl-bullets{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
+.tl-bullets li{font-size:12px;color:#a09888;line-height:1.75;padding-left:16px;position:relative;}
+.tl-bullets li::before{content:'·';position:absolute;left:0;color:var(--accent);font-size:13px;line-height:1.5;}
+
+.tl-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+.tl-pill{font-size:9.5px;letter-spacing:0.05em;padding:2px 10px;border:1px solid var(--border);color:#6a6880;}
+
+/* contact */
+.contact-row{display:flex;align-items:baseline;gap:24px;padding:18px 0;border-bottom:1px solid var(--border);}
+.contact-row:first-child{border-top:1px solid var(--border);}
+.contact-k{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:#6a6880;min-width:80px;flex-shrink:0;}
+.contact-v{font-size:13px;color:#a09888;text-decoration:none;transition:color .2s;}
+.contact-v:hover{color:var(--accent);}
+footer{position:relative;z-index:3;padding:40px 0 60px;display:flex;justify-content:space-between;font-size:10px;color:#6a6880;letter-spacing:0.06em;}
+
+.r{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease;}
+.r.in{opacity:1;transform:none;}
+@keyframes fadeup{to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:700px){
+  .nav-inner,.hero-content{padding-left:24px;padding-right:24px;}
+  .wrap{padding:0 20px;}.nav-links{display:none;}
+  .stats{grid-template-columns:repeat(2,1fr);}
+  .stat{border-right:none;border-bottom:1px solid var(--border);}
+  .stat:nth-child(odd){border-right:1px solid var(--border);}
+  .slide{padding:24px 22px;}.carousel-footer{padding:14px 22px 16px;}
+  .hero-actions{flex-direction:column;}h1.name{font-size:38px;}
+  .timeline{padding-left:24px;}.tl-dot{left:-24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="#">Ian Legaria</a>
+    <ul class="nav-links">
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="hero">
+  <canvas id="canvas-stars"></canvas>
+  <div class="fire-overlay"></div>
+  <div class="atmos-overlay"></div>
+  <div class="grain"></div>
+  <div class="hero-content">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Backend Engineer</div>
+      <h1 class="name">Ian Legaria<br>Morales</h1>
+      <p class="hero-role">Java · PostgreSQL · Distributed Systems &nbsp;·&nbsp; <span>Software Engineer III · Currently at Guru</span></p>
+      <p class="hero-bio">Seven years building backend systems across enterprise, SaaS, and startup contexts — from greenfield microservices to legacy modernization, complex API integrations to large-scale data workflows. Consistent focus on correctness, reliability, and maintainability regardless of the stack.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-accent">Case Studies</a>
+        <a href="https://github.com/iLegaria" class="btn" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="./ian-legaria-resume.pdf" class="btn" target="_blank" rel="noopener">Resume ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="inner" id="stack">
+  <div class="wrap">
+    <div class="sec-eye r">Technical Profile</div>
+    <h2 class="sec-title r">What I work with</h2>
+    <div class="stack-grid r">
+      <div class="stack-cell"><div class="stack-n">Java</div><div class="stack-d">Primary language · 7+ years</div></div>
+      <div class="stack-cell"><div class="stack-n">Spring Boot</div><div class="stack-d">Microservices · REST · GraphQL</div></div>
+      <div class="stack-cell"><div class="stack-n">JPA / Hibernate</div><div class="stack-d">Criteria API · Metamodel type-safe</div></div>
+      <div class="stack-cell"><div class="stack-n">PostgreSQL</div><div class="stack-d">Schema design · query optimization</div></div>
+      <div class="stack-cell"><div class="stack-n">Elasticsearch</div><div class="stack-d">Index design · analyzers · queries</div></div>
+      <div class="stack-cell"><div class="stack-n">Redis</div><div class="stack-d">Caching · rate limiting</div></div>
+      <div class="stack-cell"><div class="stack-n">Cloudant NoSQL</div><div class="stack-d">IBM Cloud · document store · IBM</div></div>
+      <div class="stack-cell"><div class="stack-n">AWS</div><div class="stack-d">SQS (FIFO) · async messaging · cloud infra</div></div>
+      <div class="stack-cell"><div class="stack-n">Google Pub/Sub</div><div class="stack-d">Event-driven workflows</div></div>
+      <div class="stack-cell"><div class="stack-n">OAuth 2.0</div><div class="stack-d">Auth code · client credentials</div></div>
+      <div class="stack-cell"><div class="stack-n">GraphQL</div><div class="stack-d">API design · schema-first</div></div>
+      <div class="stack-cell"><div class="stack-n">Go (Golang)</div><div class="stack-d">REST APIs · feature flags · IBM</div></div>
+      <div class="stack-cell"><div class="stack-n">TypeScript · Node</div><div class="stack-d">Integration platform · API clients</div></div>
+      <div class="stack-cell"><div class="stack-n">GCP</div><div class="stack-d">GCS · Pub/Sub · GKE · Cloud Run</div></div>
+      <div class="stack-cell"><div class="stack-n">Kubernetes</div><div class="stack-d">GKE · container orchestration</div></div>
+      <div class="stack-cell"><div class="stack-n">Docker · Terraform</div><div class="stack-d">Containerization · IaC</div></div>
+      <div class="stack-cell"><div class="stack-n">Stripe</div><div class="stack-d">Payment processing · webhooks</div></div>
+      <div class="stack-cell"><div class="stack-n">Grafana · Prometheus</div><div class="stack-d">Observability · on-call</div></div><div class="stack-cell"><div class="stack-n">Liquibase</div><div class="stack-d">Schema migrations · versioning</div></div>
+      <div class="stack-cell"><div class="stack-n">Jenkins · Travis CI</div><div class="stack-d">CI/CD pipelines</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="inner" id="work">
+  <div class="wrap">
+    <div class="sec-eye r">Selected Work</div>
+    <h2 class="sec-title r">Case Studies</h2>
+    <div class="stats r">
+      <div class="stat"><div class="stat-n">138</div><div class="stat-l">Pull requests<span style="display:block;font-size:9px;color:var(--muted);margin-top:2px;letter-spacing:0.04em;">@ Guru</span></div></div>
+      <div class="stat"><div class="stat-n">662</div><div class="stat-l">Commits shipped<span style="display:block;font-size:9px;color:var(--muted);margin-top:2px;letter-spacing:0.04em;">@ Guru</span></div></div>
+      <div class="stat"><div class="stat-n">10+</div><div class="stat-l">APIs integrated</div></div>
+      <div class="stat"><div class="stat-n">7yr</div><div class="stat-l">Backend experience</div></div>
+    </div>
+    <div class="carousel r">
+      <div class="slides">
+        <div class="slide active">
+          <div class="case-num">01 / 05 <span style="color:var(--muted);font-size:9px;margin-left:10px;letter-spacing:0.12em;">Guru Technologies</span></div>
+          <div class="case-title">Zero-Downtime Data Migration</div>
+          <div class="case-sub">Restructuring a live content model in production — dual-write · idempotent backfill · schema cleanup</div>
+          <div class="case-block"><div class="case-label">Problem</div><p>A core content entity was storing structured data as raw JSON in a single column. As the product evolved, that model needed to be broken out into a normalized relational structure — but the table was live, under constant write pressure, and a big-bang migration wasn't an option.</p></div>
+          <div class="case-block"><div class="case-label">Approach</div><p>Implemented the dual-write pattern: all new writes went to both the old and new schemas simultaneously. A background admin job backfilled historical records in batches, with duplicate detection on each pass to make reruns safe. Once data was verified, reads were cut over, legacy columns dropped, and old tables removed.</p></div>
+          <div class="case-block"><div class="case-label">Outcome</div><p>Full migration completed with zero downtime and no data loss. The new schema is normalized, independently queryable, and decoupled from the parent entity — making future features significantly cheaper to build.</p></div>
+          <div class="tags"><span class="tag">Java</span><span class="tag">PostgreSQL</span><span class="tag">JPA</span><span class="tag">Dual-Write Pattern</span><span class="tag">Batch Processing</span><span class="tag">Idempotency</span></div>
+        </div>
+        <div class="slide">
+          <div class="case-num">02 / 05 <span style="color:var(--muted);font-size:9px;margin-left:10px;letter-spacing:0.12em;">Guru Technologies</span></div>
+          <div class="case-title">Granular Authorization System</div>
+          <div class="case-sub">RBAC with custom roles and atomic permissions across multiple resource types</div>
+          <div class="case-block"><div class="case-label">Problem</div><p>The existing authorization model only supported a fixed set of global roles. Enterprise customers needed workspace-level customization — the ability to define roles with precise, composable permissions spanning different resource types.</p></div>
+          <div class="case-block"><div class="case-label">Approach</div><p>Implemented a full RBAC system: a CRUD API for custom role definitions, an atomic permission matrix covering granular actions per resource type, and per-resource permission endpoints. Access validation logic extracted into a dedicated service — consolidating five distinct access paths into a single testable unit. Rollout gated behind a feature flag. Orphaned access records cleaned up automatically on role deletion.</p></div>
+          <div class="case-block"><div class="case-label">Outcome</div><p>A complete authorization layer covering the full role lifecycle, permission enforcement across all resource types, and automated access cleanup — deployed progressively with no breaking changes to existing behavior.</p></div>
+          <div class="tags"><span class="tag">Java</span><span class="tag">RBAC</span><span class="tag">REST API Design</span><span class="tag">Feature Flags</span><span class="tag">Access Control</span><span class="tag">PostgreSQL</span></div>
+        </div>
+        <div class="slide">
+          <div class="case-num">03 / 05 <span style="color:var(--muted);font-size:9px;margin-left:10px;letter-spacing:0.12em;">Cision</span></div>
+          <div class="case-title">Enterprise Search Infrastructure</div>
+          <div class="case-sub">Designing an Elasticsearch layer from scratch for a greenfield content platform — index design · analyzers · query architecture</div>
+          <div class="case-block"><div class="case-label">Problem</div><p>A new microservices platform serving journalists, content creators, and enterprise users had no search infrastructure. The content model was heterogeneous — multiple content types with different field structures — and search had to be built from the ground up to match the platform's query requirements from day one.</p></div>
+          <div class="case-block"><div class="case-label">Approach</div><p>Designed and implemented the Elasticsearch integration from scratch: defined index mappings aligned with the content model, configured analyzers and tokenizers for full-text search behavior (stemming, partial match, language handling), and built the query architecture for enterprise content retrieval. Implemented as a dedicated service integrated with the Spring Boot backend.</p></div>
+          <div class="case-block"><div class="case-label">Outcome</div><p>Full search infrastructure operational from platform launch. The index design supported the evolving content model without requiring structural changes as new features were added. Search became a stable foundational layer that other services could depend on.</p></div>
+          <div class="tags"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Elasticsearch</span><span class="tag">Index Design</span><span class="tag">Analyzers</span><span class="tag">Microservices</span><span class="tag">GCP</span></div>
+        </div>
+        <div class="slide">
+          <div class="case-num">04 / 05 <span style="color:var(--muted);font-size:9px;margin-left:10px;letter-spacing:0.12em;">IBM</span></div>
+          <div class="case-title">Feature Flags System in Go</div>
+          <div class="case-sub">Building a Golang-based feature flag service for incremental rollouts on an enterprise contracts platform</div>
+          <div class="case-block"><div class="case-label">Problem</div><p>An internal IBM contracts platform had no mechanism to roll out new functionality incrementally. Every release carried the full risk of all its changes — features couldn't be toggled per user or context without a redeployment, making controlled releases on enterprise-critical workflows impractical.</p></div>
+          <div class="case-block"><div class="case-label">Approach</div><p>Collaborated with a colleague to design and implement a Golang-based feature flags service. Built the flag evaluation logic, the management API, and the integration layer with the existing contracts backend. The system supported flag targeting by user and context attributes, enabling controlled rollouts and gated releases across enterprise workflows.</p></div>
+          <div class="case-block"><div class="case-label">Outcome</div><p>Feature rollouts decoupled from deployments. New functionality could be exposed to specific users before wider release, reducing risk on a platform handling enterprise contracts. Test coverage of the contracts backend also increased from 20% to 80% over this period.</p></div>
+          <div class="tags"><span class="tag">Go</span><span class="tag">REST API</span><span class="tag">Feature Flags</span><span class="tag">Cloudant NoSQL</span><span class="tag">Docker</span><span class="tag">IBM Cloud</span><span class="tag">Travis CI</span></div>
+        </div>
+        <div class="slide">
+          <div class="case-num">05 / 05 <span style="color:var(--muted);font-size:9px;margin-left:10px;letter-spacing:0.12em;">Guru Technologies</span></div>
+          <div class="case-title">Multi-Platform Integration Layer</div>
+          <div class="case-sub">10+ external API integrations with OAuth 2.0, rate-limit retry, and incremental sync</div>
+          <div class="case-block"><div class="case-label">Problem</div><p>The platform needed to sync content from a growing list of third-party SaaS tools — Salesforce, Jira, Confluence, Coda, Smartsheet, and others — each with different auth models, pagination strategies, rate limits, and data hierarchies.</p></div>
+          <div class="case-block"><div class="case-label">Approach</div><p>Built each integration on a unified architecture: OAuth 2.0 (auth code and client credentials), API key, Basic, and Bearer auth — consistent across connectors. Pagination handled both cursor-based and page-number strategies. Rate-limit retry with exponential backoff where required. Sync: incremental every 4h, full weekly, initial on connection. For one connector, implemented a dual-path architecture detecting tenant API capabilities at runtime. Also built an internal scaffolding tool that reduced the effort to add a new connector from days to hours.</p></div>
+          <div class="case-block"><div class="case-label">Outcome</div><p>Consistent integration coverage across 10+ platforms. The capability-based routing pattern became reusable. The scaffolding tool enforced structural consistency and cut onboarding time for new integrations.</p></div>
+          <div class="tags"><span class="tag">TypeScript</span><span class="tag">OAuth 2.0</span><span class="tag">Rate Limiting</span><span class="tag">Incremental Sync</span><span class="tag">Dual-Path Architecture</span></div>
+        </div>
+      </div>
+      <div class="carousel-footer">
+        <div class="carousel-dots">
+          <div class="dot active" data-i="0"></div><div class="dot" data-i="1"></div>
+          <div class="dot" data-i="2"></div><div class="dot" data-i="3"></div><div class="dot" data-i="4"></div>
+        </div>
+        <div class="carousel-arrows">
+          <button class="arr" id="arr-prev" disabled>&#8592;</button>
+          <button class="arr" id="arr-next">&#8594;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE — TIMELINE -->
+<section class="inner" id="experience">
+  <div class="wrap">
+    <div class="sec-eye r">Career</div>
+    <h2 class="sec-title r">Experience</h2>
+    <div class="timeline">
+
+      <!-- GURU -->
+      <div class="tl-item r">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <span class="tl-dates">Jul 2024 — Present</span>
+          <span class="tl-sep">·</span>
+          <span class="tl-company">Guru</span>
+          <span class="tl-location">Remote · Philadelphia</span>
+        </div>
+        <div class="tl-role">Software Engineer III (Backend)</div>
+        <ul class="tl-bullets">
+          <li>Implemented a zero-downtime migration of a core content model using the dual-write pattern — batched backfills, idempotent reruns, schema cleanup post-cutover.</li>
+          <li>Built a custom RBAC system: role CRUD API, atomic permission matrix across multiple resource types, and orphaned access record cleanup gated behind a feature flag.</li>
+          <li>Built and maintained 10+ integrations with external SaaS APIs (Salesforce, Jira, Confluence, GitHub, Coda) — handling OAuth 2.0, pagination, rate-limit retry, and incremental sync.</li>
+          <li>Built an internal tool powered by AI agents (Claude Skills, LangGraph) to automate the development, deployment, and debugging of integrations — cutting average delivery time by over 60%.</li>
+          <li>Adopted AI-assisted development workflows using Claude, ChatGPT, and Cursor throughout the engineering cycle — from design and implementation to debugging and code review — as standard tooling for daily backend work.</li>
+          <li>Migrated multiple services from deprecated Hibernate Criteria API to type-safe JPA Criteria with Metamodel attributes.</li>
+        </ul>
+        <div class="tl-pills">
+          <span class="tl-pill">Java</span><span class="tl-pill">Spring Boot</span><span class="tl-pill">JPA / Hibernate</span>
+          <span class="tl-pill">PostgreSQL</span><span class="tl-pill">AWS SQS</span><span class="tl-pill">Elasticsearch</span>
+          <span class="tl-pill">TypeScript</span><span class="tl-pill">OAuth 2.0</span><span class="tl-pill">Liquibase</span>
+        </div>
+      </div>
+
+      <!-- CISION -->
+      <div class="tl-item r">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <span class="tl-dates">May 2022 — Jul 2024</span>
+          <span class="tl-sep">·</span>
+          <span class="tl-company">Cision</span>
+          <span class="tl-location">Remote · Mexico City</span>
+        </div>
+        <div class="tl-role">Software Engineer II</div>
+        <ul class="tl-bullets">
+          <li>Joined a greenfield microservices platform built from scratch for content creators, journalists, and enterprise users — ~30 engineers across multiple service teams.</li>
+          <li>Co-designed one of the platform's first GraphQL services: a media pipeline that accepted image uploads, generated multiple resized variants, and stored results in Google Cloud Storage.</li>
+          <li>Built the Elasticsearch search layer from scratch: index mappings, analyzers, tokenizers, and query structure for enterprise content search.</li>
+          <li>Integrated Stripe for payment processing and wired Google Cloud Pub/Sub for the async subscription update flow triggered on purchase events.</li>
+          <li>Deployed on GKE via GitHub Actions and Terraform; monitored with Grafana and Prometheus. Participated in on-call rotation.</li>
+        </ul>
+        <div class="tl-pills">
+          <span class="tl-pill">Java</span><span class="tl-pill">Spring Boot</span><span class="tl-pill">GraphQL</span>
+          <span class="tl-pill">PostgreSQL</span><span class="tl-pill">Elasticsearch</span><span class="tl-pill">Pub/Sub</span>
+          <span class="tl-pill">Stripe</span><span class="tl-pill">Kubernetes</span><span class="tl-pill">Terraform</span>
+        </div>
+      </div>
+
+      <!-- IBM -->
+      <div class="tl-item r">
+        <div class="tl-dot dim"></div>
+        <div class="tl-header">
+          <span class="tl-dates">Sep 2019 — May 2022</span>
+          <span class="tl-sep">·</span>
+          <span class="tl-company">IBM</span>
+          <span class="tl-location">Remote · Guadalajara</span>
+        </div>
+        <div class="tl-role">Full Stack Developer</div>
+        <ul class="tl-bullets">
+          <li>Worked on two internal IBM platforms across separate teams — both modernization projects involving legacy systems and enterprise-scale integrations.</li>
+          <li>On the first project: built and maintained backend services in Go and REST APIs for an internal contracts system; increased test coverage from 20% to 80%; collaborated on a Golang feature flags system.</li>
+          <li>On the second project: contributed to migrating a legacy Java 7 / Servlets app hosted on IBM WebSphere to IBM's hybrid cloud — dockerized the application, introduced Jenkins for CI, and helped start a new React frontend.</li>
+        </ul>
+        <div class="tl-pills">
+          <span class="tl-pill">Go</span><span class="tl-pill">Java</span><span class="tl-pill">React</span>
+          <span class="tl-pill">Cloudant NoSQL</span><span class="tl-pill">PostgreSQL</span>
+          <span class="tl-pill">Docker</span><span class="tl-pill">Kubernetes</span>
+          <span class="tl-pill">Jenkins</span><span class="tl-pill">IBM Cloud</span>
+        </div>
+      </div>
+
+      <!-- SMARTSOFT -->
+      <div class="tl-item r">
+        <div class="tl-dot dim"></div>
+        <div class="tl-header">
+          <span class="tl-dates">Jul 2018 — Sep 2019</span>
+          <span class="tl-sep">·</span>
+          <span class="tl-company">SmartSoft America</span>
+          <span class="tl-location">Tlaxcala, Mexico</span>
+        </div>
+        <div class="tl-role">Java Developer</div>
+        <ul class="tl-bullets">
+          <li>First professional role — worked across multiple client projects including a government cadastral system, an events and conferences platform, and a cargo logistics app for container management.</li>
+          <li>Built backend systems using Java, JSF, and REST APIs; deployed on GlassFish application server.</li>
+          <li>Developed Android mobile applications in Kotlin, integrated with backend services.</li>
+          <li>Designed and maintained MySQL and PostgreSQL databases across multiple projects.</li>
+        </ul>
+        <div class="tl-pills">
+          <span class="tl-pill">Java</span><span class="tl-pill">JSF</span><span class="tl-pill">Kotlin</span>
+          <span class="tl-pill">Android</span><span class="tl-pill">MySQL</span>
+          <span class="tl-pill">PostgreSQL</span><span class="tl-pill">GlassFish</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION + PUBLICATION -->
+<section class="inner" id="education">
+  <div class="wrap">
+    <div class="sec-eye r">Background</div>
+    <h2 class="sec-title r">Education & Publications</h2>
+
+    <div class="timeline">
+      <div class="tl-item r">
+        <div class="tl-dot dim"></div>
+        <div class="tl-header">
+          <span class="tl-dates">Aug 2014 — Jul 2018</span>
+          <span class="tl-sep">·</span>
+          <span class="tl-company">UAT</span>
+          <span class="tl-location">Tlaxcala, Mexico</span>
+        </div>
+        <div class="tl-role">B.S. Computer Engineering</div>
+        <ul class="tl-bullets">
+          <li>Universidad Autónoma de Tlaxcala — Computer Engineering program.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item r">
+        <div class="tl-dot dim"></div>
+        <div class="tl-header">
+          <span class="tl-dates">Academic Publication</span>
+          <span class="tl-sep">·</span>
+          <span class="tl-company">IZTATL Magazine</span>
+          <span class="tl-location">ISSN: 2007-9958</span>
+        </div>
+        <div class="tl-role">Risk Management in the Development of Software Projects</div>
+        <ul class="tl-bullets">
+          <li>Published research article on risk identification and mitigation strategies in software project development, featured in IZTATL academic magazine.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="inner" id="contact">
+  <div class="wrap">
+    <div class="sec-eye r">Get in touch</div>
+    <h2 class="sec-title r">Contact</h2>
+    <div class="r">
+      <div class="contact-row"><span class="contact-k">Email</span><a href="mailto:il.legaria@gmail.com" class="contact-v">il.legaria@gmail.com</a></div>
+      <div class="contact-row"><span class="contact-k">GitHub</span><a href="https://github.com/iLegaria" class="contact-v" target="_blank" rel="noopener">github.com/iLegaria</a></div>
+      <div class="contact-row"><span class="contact-k">LinkedIn</span><a href="https://linkedin.com/in/ian-legaria-morales" class="contact-v" target="_blank" rel="noopener">linkedin.com/in/ian-legaria-morales</a></div>
+      <div class="contact-row"><span class="contact-k">Resume</span><a href="./ian-legaria-resume.pdf" class="contact-v" target="_blank" rel="noopener">Download PDF ↓</a></div>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+(function(){
+  const canvas=document.getElementById('canvas-stars');
+  const ctx=canvas.getContext('2d');
+  let stars=[],planets=[],W,H,rot=0;
+  function resize(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
+  function initStars(){
+    stars=[];
+    const n=Math.floor(W*H/3600);
+    for(let i=0;i<n;i++){
+      const r=Math.random();
+      stars.push({ x:Math.random()*W, y:Math.random()*H,
+        radius:r<.68?Math.random()*.55+.15:r<.9?Math.random()*.9+.45:Math.random()*1.4+.9,
+        alpha:Math.random()*.6+.2, ts:Math.random()*.01+.002,
+        to:Math.random()*Math.PI*2, warm:Math.random()<.08 });
+    }
+  }
+  const PLANET_COLS=[
+    {r:232,g:149,b:42},   // amber
+    {r:100,g:190,b:255},  // ice blue
+    {r:180,g:130,b:255},  // soft purple
+    {r:255,g:210,b:160},  // warm cream
+    {r:140,g:255,b:200},  // mint
+    {r:255,g:150,b:110},  // coral
+  ];
+  function initPlanets(){
+    planets=[];
+    const n=8+Math.floor(Math.random()*4);
+    for(let i=0;i<n;i++){
+      const col=PLANET_COLS[Math.floor(Math.random()*PLANET_COLS.length)];
+      planets.push({
+        x:Math.random()*W, y:Math.random()*H,
+        radius:1.8+Math.random()*2.4,
+        alpha:0.65+Math.random()*0.35,
+        ts:0.0015+Math.random()*0.005,
+        to:Math.random()*Math.PI*2,
+        col, glow:14+Math.random()*22,
+      });
+    }
+  }
+  let comet=null,cc=0;
+  function spawnComet(){
+    const a=Math.PI*(0.17+Math.random()*.22),spd=10+Math.random()*5;
+    comet={x:Math.random()*W*.5,y:Math.random()*H*.2,vx:Math.cos(a)*spd,vy:Math.sin(a)*spd,len:90+Math.random()*110,alpha:0};
+  }
+  function drawComet(){
+    if(!comet)return;
+    comet.x+=comet.vx;comet.y+=comet.vy;comet.alpha=Math.min(1,comet.alpha+.055);
+    if(comet.x>W+160||comet.y>H+60){comet=null;return;}
+    const spd=Math.hypot(comet.vx,comet.vy);
+    const tx=comet.x-(comet.vx/spd)*comet.len,ty=comet.y-(comet.vy/spd)*comet.len;
+    ctx.save();
+    const g=ctx.createLinearGradient(tx,ty,comet.x,comet.y);
+    g.addColorStop(0,'rgba(180,215,255,0)');
+    g.addColorStop(.6,`rgba(215,232,255,${comet.alpha*.33})`);
+    g.addColorStop(1,`rgba(255,255,255,${comet.alpha*.88})`);
+    ctx.strokeStyle=g;ctx.lineWidth=1.8;
+    ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(comet.x,comet.y);ctx.stroke();
+    ctx.shadowBlur=10;ctx.shadowColor='rgba(180,220,255,0.9)';
+    ctx.beginPath();ctx.arc(comet.x,comet.y,1.8,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,255,255,${comet.alpha})`;ctx.fill();
+    ctx.restore();
+  }
+  let frame=0;
+  function draw(){
+    ctx.clearRect(0,0,W,H);frame+=.016;rot+=.00028;
+    ctx.save();ctx.translate(W/2,H/2);ctx.rotate(rot);ctx.translate(-W/2,-H/2);
+    stars.forEach(s=>{
+      const fl=Math.sin(frame*s.ts*60+s.to);
+      const a=Math.max(0,Math.min(1,s.alpha+fl*.13));
+      ctx.beginPath();ctx.arc(s.x,s.y,s.radius,0,Math.PI*2);
+      ctx.fillStyle=s.warm?`rgba(240,190,100,${a})`:`rgba(200,212,235,${a})`;ctx.fill();
+    });
+    ctx.restore();
+    // Luminescent planet-like stars
+    planets.forEach(p=>{
+      const fl=Math.sin(frame*p.ts*60+p.to);
+      const a=Math.max(0.3,Math.min(1,p.alpha+fl*.32));
+      const gp=p.glow*(0.55+0.45*((fl+1)/2));
+      ctx.save();
+      // Outer halo
+      ctx.shadowBlur=gp*2.2;
+      ctx.shadowColor=`rgba(${p.col.r},${p.col.g},${p.col.b},${a*.35})`;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.radius+1.4,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${p.col.r},${p.col.g},${p.col.b},${a*.12})`;
+      ctx.fill();
+      // Bright core with glow
+      ctx.shadowBlur=gp;
+      ctx.shadowColor=`rgba(${p.col.r},${p.col.g},${p.col.b},${a})`;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${p.col.r},${p.col.g},${p.col.b},${a})`;
+      ctx.fill();
+      ctx.restore();
+    });
+    cc++;if(cc>=700&&!comet){cc=0;spawnComet();}drawComet();
+    requestAnimationFrame(draw);
+  }
+  resize();initStars();initPlanets();draw();
+  let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{resize();initStars();initPlanets();},200);});
+})();
+
+(function(){
+  const slides=document.querySelectorAll('.slide'),dots=document.querySelectorAll('.dot');
+  const prev=document.getElementById('arr-prev'),next=document.getElementById('arr-next');
+  let cur=0;
+  function goTo(n){
+    slides[cur].classList.remove('active');dots[cur].classList.remove('active');
+    cur=n;slides[cur].classList.add('active');dots[cur].classList.add('active');
+    prev.disabled=cur===0;next.disabled=cur===slides.length-1;
+  }
+  prev.addEventListener('click',()=>{if(cur>0)goTo(cur-1);});
+  next.addEventListener('click',()=>{if(cur<slides.length-1)goTo(cur+1);});
+  dots.forEach(d=>d.addEventListener('click',()=>goTo(+d.dataset.i)));
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowLeft'&&cur>0)goTo(cur-1);
+    if(e.key==='ArrowRight'&&cur<slides.length-1)goTo(cur+1);
+  });
+})();
+
+// Scroll reveal with immediate trigger on load
+function revealAll(){
+  document.querySelectorAll('.r').forEach(el=>{
+    const rect=el.getBoundingClientRect();
+    if(rect.top < window.innerHeight*1.05) el.classList.add('in');
+  });
+}
+revealAll();
+window.addEventListener('scroll',revealAll,{passive:true});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+},{threshold:0.01});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+</script>
+
+<div class="wrap"><footer class="r"><span>Ian Legaria Morales</span><span>2026</span></footer></div>
+</body>
+</html>
