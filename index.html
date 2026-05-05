@@ -82,6 +82,28 @@ section.inner:last-of-type{border-bottom:none;}
 .stack-n{font-size:12.5px;font-weight:500;color:var(--text);margin-bottom:2px;}
 .stack-d{font-size:10.5px;color:#6a6880;}
 
+/* personal projects */
+.project-grid{display:grid;grid-template-columns:1fr;gap:22px;}
+.project-card{border:1px solid var(--border);background:rgba(5,7,14,0.72);padding:34px 36px;position:relative;overflow:hidden;}
+.project-card::before{content:'';position:absolute;inset:0 auto 0 0;width:2px;background:linear-gradient(to bottom,transparent,var(--accent),transparent);opacity:.85;}
+.project-top{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:18px;}
+.project-heading{display:flex;align-items:center;gap:14px;}
+.project-logo{width:46px;height:46px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);background:rgba(232,149,42,0.035);box-shadow:0 0 18px rgba(232,149,42,0.10);}
+.project-logo svg{width:34px;height:34px;display:block;filter:drop-shadow(0 0 8px rgba(245,184,65,0.18));}
+.project-kicker{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;}
+.project-title{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:0.05em;color:var(--text);line-height:1.2;}
+.project-type{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#6a6880;border:1px solid var(--border);padding:4px 10px;white-space:nowrap;}
+.project-sub{font-size:12px;color:#6a6880;line-height:1.7;margin-bottom:24px;max-width:650px;}
+.project-body{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;margin-bottom:24px;}
+.project-label{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#6a6880;margin-bottom:7px;}
+.project-copy{font-size:12.5px;color:#a09888;line-height:1.9;}
+.project-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.project-list li{font-size:12px;color:#a09888;line-height:1.7;padding-left:15px;position:relative;}
+.project-list li::before{content:'·';position:absolute;left:0;color:var(--accent);font-size:13px;line-height:1.5;}
+.project-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+.project-link{font-size:10px;letter-spacing:0.09em;text-transform:uppercase;text-decoration:none;color:#a09888;border:1px solid var(--border);padding:8px 13px;transition:border-color .2s,color .2s,background .2s,box-shadow .2s;}
+.project-link:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-dim);box-shadow:0 0 14px var(--accent-glow);}
+
 /* carousel */
 .carousel{border:1px solid var(--border);background:rgba(5,7,14,0.7);position:relative;overflow:hidden;}
 .carousel::before{content:'';position:absolute;inset:0 auto 0 0;width:2px;background:linear-gradient(to bottom,transparent,var(--accent),transparent);z-index:2;}
@@ -191,6 +213,7 @@ footer{position:relative;z-index:3;padding:40px 0 60px;display:flex;justify-cont
   .stat{border-right:none;border-bottom:1px solid var(--border);}
   .stat:nth-child(odd){border-right:1px solid var(--border);}
   .slide{padding:24px 22px;}.carousel-footer{padding:14px 22px 16px;}
+  .project-card{padding:26px 22px;}.project-top{flex-direction:column;gap:10px;}.project-body{grid-template-columns:1fr;}.project-heading{align-items:flex-start;}.project-logo{width:42px;height:42px;}
   .hero-actions{flex-direction:column;}h1.name{font-size:38px;}
   .timeline{padding-left:24px;}.tl-dot{left:-24px;}
 }
@@ -203,6 +226,7 @@ footer{position:relative;z-index:3;padding:40px 0 60px;display:flex;justify-cont
     <a class="nav-brand" href="#">Ian Legaria</a>
     <ul class="nav-links">
       <li><a href="#stack">Stack</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#work">Work</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
@@ -220,7 +244,7 @@ footer{position:relative;z-index:3;padding:40px 0 60px;display:flex;justify-cont
     <div class="hero-inner">
       <div class="hero-eyebrow">Backend Engineer</div>
       <h1 class="name">Ian Legaria<br>Morales</h1>
-      <p class="hero-role">Java · PostgreSQL · Distributed Systems &nbsp;·&nbsp; <span>Software Engineer III · Currently at Guru</span></p>
+      <p class="hero-role"><span>Software Engineer III · Currently at Guru</span></p>
       <p class="hero-bio">Seven years building backend systems across enterprise, SaaS, and startup contexts — from greenfield microservices to legacy modernization, complex API integrations to large-scale data workflows. Consistent focus on correctness, reliability, and maintainability regardless of the stack.</p>
       <div class="hero-actions">
         <a href="#work" class="btn btn-accent">Case Studies</a>
@@ -256,6 +280,62 @@ footer{position:relative;z-index:3;padding:40px 0 60px;display:flex;justify-cont
       <div class="stack-cell"><div class="stack-n">Stripe</div><div class="stack-d">Payment processing · webhooks</div></div>
       <div class="stack-cell"><div class="stack-n">Grafana · Prometheus</div><div class="stack-d">Observability · on-call</div></div><div class="stack-cell"><div class="stack-n">Liquibase</div><div class="stack-d">Schema migrations · versioning</div></div>
       <div class="stack-cell"><div class="stack-n">Jenkins · Travis CI</div><div class="stack-d">CI/CD pipelines</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAL PROJECTS -->
+<section class="inner" id="projects">
+  <div class="wrap">
+    <div class="sec-eye r">Independent Engineering</div>
+    <h2 class="sec-title r">Personal Projects</h2>
+    <div class="project-grid r">
+      <article class="project-card">
+        <div class="project-top">
+          <div class="project-heading">
+            <div class="project-logo" aria-hidden="true">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="16" stroke="#F5B841" stroke-width="2"/>
+                <circle cx="26" cy="28" r="2" fill="#F5B841" opacity="0.6"/>
+                <circle cx="36" cy="36" r="1.5" fill="#F5B841" opacity="0.5"/>
+                <circle cx="34" cy="24" r="1.2" fill="#F5B841" opacity="0.4"/>
+                <path d="M24 40 L28 30 L32 36 L36 30 L40 40" stroke="#F5B841" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+              </svg>
+            </div>
+            <div>
+              <div class="project-kicker">Featured Project</div>
+              <h3 class="project-title">Mercury</h3>
+            </div>
+          </div>
+          <div class="project-type">Backend Systems Case Study</div>
+        </div>
+        <p class="project-sub">Self-hosted RAG backend for document ingestion, semantic search, grounded Q&amp;A, quiz generation, snippets, and spaced-repetition flashcards.</p>
+        <div class="project-body">
+          <div>
+            <div class="project-label">Backend focus</div>
+            <p class="project-copy">A self-hosted knowledge engine designed to organize and study personal documents using semantic search.
+              Created out of a real need, and used as a platform to explore backend system design concepts like async pipelines, caching strategies, and LLM integrations.</p>
+          </div>
+          <div>
+            <div class="project-label">Highlights</div>
+            <ul class="project-list">
+              <li>Spring Boot 3.5, Java 21, PostgreSQL + pgvector</li>
+              <li>RabbitMQ ingestion pipeline with transactional outbox</li>
+              <li>Redis search caching and Testcontainers integration tests</li>
+              <li>GitHub Actions backend CI and protected main branch</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">PostgreSQL</span><span class="tag">pgvector</span><span class="tag">RabbitMQ</span><span class="tag">Redis</span><span class="tag">Testcontainers</span><span class="tag">GitHub Actions</span>
+        </div>
+        <div class="project-actions">
+          <a class="project-link" href="https://github.com/iLegaria/mercury" target="_blank" rel="noopener">Repository ↗</a>
+          <a class="project-link" href="https://github.com/iLegaria/mercury/blob/main/docs/architecture.md" target="_blank" rel="noopener">Architecture ↗</a>
+          <a class="project-link" href="https://github.com/iLegaria/mercury/blob/main/docs/adr/README.md" target="_blank" rel="noopener">ADRs ↗</a>
+          <a class="project-link" href="https://github.com/iLegaria/mercury/actions" target="_blank" rel="noopener">CI ↗</a>
+        </div>
+      </article>
     </div>
   </div>
 </section>
