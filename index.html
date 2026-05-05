@@ -87,6 +87,9 @@ section.inner:last-of-type{border-bottom:none;}
 .project-card{border:1px solid var(--border);background:rgba(5,7,14,0.72);padding:34px 36px;position:relative;overflow:hidden;}
 .project-card::before{content:'';position:absolute;inset:0 auto 0 0;width:2px;background:linear-gradient(to bottom,transparent,var(--accent),transparent);opacity:.85;}
 .project-top{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:18px;}
+.project-heading{display:flex;align-items:center;gap:14px;}
+.project-logo{width:46px;height:46px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);background:rgba(232,149,42,0.035);box-shadow:0 0 18px rgba(232,149,42,0.10);}
+.project-logo svg{width:34px;height:34px;display:block;filter:drop-shadow(0 0 8px rgba(245,184,65,0.18));}
 .project-kicker{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;}
 .project-title{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:0.05em;color:var(--text);line-height:1.2;}
 .project-type{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#6a6880;border:1px solid var(--border);padding:4px 10px;white-space:nowrap;}
@@ -210,7 +213,7 @@ footer{position:relative;z-index:3;padding:40px 0 60px;display:flex;justify-cont
   .stat{border-right:none;border-bottom:1px solid var(--border);}
   .stat:nth-child(odd){border-right:1px solid var(--border);}
   .slide{padding:24px 22px;}.carousel-footer{padding:14px 22px 16px;}
-  .project-card{padding:26px 22px;}.project-top{flex-direction:column;gap:10px;}.project-body{grid-template-columns:1fr;}
+  .project-card{padding:26px 22px;}.project-top{flex-direction:column;gap:10px;}.project-body{grid-template-columns:1fr;}.project-heading{align-items:flex-start;}.project-logo{width:42px;height:42px;}
   .hero-actions{flex-direction:column;}h1.name{font-size:38px;}
   .timeline{padding-left:24px;}.tl-dot{left:-24px;}
 }
@@ -289,9 +292,20 @@ footer{position:relative;z-index:3;padding:40px 0 60px;display:flex;justify-cont
     <div class="project-grid r">
       <article class="project-card">
         <div class="project-top">
-          <div>
-            <div class="project-kicker">Featured Project</div>
-            <h3 class="project-title">Mercury</h3>
+          <div class="project-heading">
+            <div class="project-logo" aria-hidden="true">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="16" stroke="#F5B841" stroke-width="2"/>
+                <circle cx="26" cy="28" r="2" fill="#F5B841" opacity="0.6"/>
+                <circle cx="36" cy="36" r="1.5" fill="#F5B841" opacity="0.5"/>
+                <circle cx="34" cy="24" r="1.2" fill="#F5B841" opacity="0.4"/>
+                <path d="M24 40 L28 30 L32 36 L36 30 L40 40" stroke="#F5B841" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+              </svg>
+            </div>
+            <div>
+              <div class="project-kicker">Featured Project</div>
+              <h3 class="project-title">Mercury</h3>
+            </div>
           </div>
           <div class="project-type">Backend Systems Case Study</div>
         </div>
